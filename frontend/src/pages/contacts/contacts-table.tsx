@@ -32,6 +32,7 @@ const ContactsTablesPage = () => {
     { label: 'FirstName', title: 'first_name' },
     { label: 'LastName', title: 'last_name' },
     { label: 'Email', title: 'email' },
+    { label: 'Phone', title: 'phone', number: 'true' },
 
     { label: 'Lead', title: 'lead' },
   ]);

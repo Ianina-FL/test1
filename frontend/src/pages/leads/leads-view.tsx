@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect } from 'react';
 import Head from 'next/head';
+import 'react-toastify/dist/ReactToastify.min.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import dayjs from 'dayjs';
@@ -85,6 +86,8 @@ const LeadsView = () => {
                       <th>LastName</th>
 
                       <th>Email</th>
+
+                      <th>Phone</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -104,6 +107,8 @@ const LeadsView = () => {
                           <td data-label='last_name'>{item.last_name}</td>
 
                           <td data-label='email'>{item.email}</td>
+
+                          <td data-label='phone'>{item.phone}</td>
                         </tr>
                       ))}
                   </tbody>
@@ -187,6 +192,8 @@ const LeadsView = () => {
                       <th>LastName</th>
 
                       <th>Email</th>
+
+                      <th>Phone</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -206,6 +213,8 @@ const LeadsView = () => {
                           <td data-label='last_name'>{item.last_name}</td>
 
                           <td data-label='email'>{item.email}</td>
+
+                          <td data-label='phone'>{item.phone}</td>
                         </tr>
                       ))}
                   </tbody>

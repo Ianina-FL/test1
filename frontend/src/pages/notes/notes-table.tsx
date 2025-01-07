@@ -32,6 +32,7 @@ const NotesTablesPage = () => {
     { label: 'Content', title: 'content' },
 
     { label: 'User', title: 'user' },
+
     { label: 'Lead', title: 'lead' },
   ]);
 

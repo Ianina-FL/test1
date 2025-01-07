@@ -56,6 +56,8 @@ module.exports = class SearchService {
         organizations: ['name'],
       };
       const columnsInt = {
+        contacts: ['phone'],
+
         metrics: ['value'],
       };
 

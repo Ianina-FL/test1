@@ -32,6 +32,10 @@ router.use(checkCrudPermissions('contacts'));
  *            type: string
  *            default: email
 
+ *          phone:
+ *            type: integer
+ *            format: int64
+
  */
 
 /**
@@ -313,7 +317,7 @@ router.get(
 
     const payload = await ContactsDBApi.findAll(req.query, globalAccess);
     if (filetype && filetype === 'csv') {
-      const fields = ['id', 'first_name', 'last_name', 'email'];
+      const fields = ['id', 'first_name', 'last_name', 'email', 'phone'];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

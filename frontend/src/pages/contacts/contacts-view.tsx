@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect } from 'react';
 import Head from 'next/head';
+import 'react-toastify/dist/ReactToastify.min.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import dayjs from 'dayjs';
@@ -82,6 +83,11 @@ const ContactsView = () => {
               <p>{contacts?.organization?.name ?? 'No data'}</p>
             </div>
           )}
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Phone</p>
+            <p>{contacts?.phone || 'No data'}</p>
+          </div>
 
           <BaseDivider />
 

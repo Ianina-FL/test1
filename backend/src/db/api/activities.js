@@ -190,11 +190,53 @@ module.exports = class ActivitiesDBApi {
       {
         model: db.users,
         as: 'user',
+
+        where: filter.user
+          ? {
+              [Op.or]: [
+                {
+                  id: {
+                    [Op.in]: filter.user
+                      .split('|')
+                      .map((term) => Utils.uuid(term)),
+                  },
+                },
+                {
+                  firstName: {
+                    [Op.or]: filter.user
+                      .split('|')
+                      .map((term) => ({ [Op.iLike]: `%${term}%` })),
+                  },
+                },
+              ],
+            }
+          : {},
       },
 
       {
         model: db.leads,
         as: 'lead',
+
+        where: filter.lead
+          ? {
+              [Op.or]: [
+                {
+                  id: {
+                    [Op.in]: filter.lead
+                      .split('|')
+                      .map((term) => Utils.uuid(term)),
+                  },
+                },
+                {
+                  name: {
+                    [Op.or]: filter.lead
+                      .split('|')
+                      .map((term) => ({ [Op.iLike]: `%${term}%` })),
+                  },
+                },
+              ],
+            }
+          : {},
       },
 
       {
@@ -300,28 +342,6 @@ module.exports = class ActivitiesDBApi {
         };
       }
 
-      if (filter.user) {
-        const listItems = filter.user.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          userId: { [Op.or]: listItems },
-        };
-      }
-
-      if (filter.lead) {
-        const listItems = filter.lead.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          leadId: { [Op.or]: listItems },
-        };
-      }
-
       if (filter.organization) {
         const listItems = filter.organization.split('|').map((item) => {
           return Utils.uuid(item);
@@ -366,7 +386,6 @@ module.exports = class ActivitiesDBApi {
       ? {
           rows: [],
           count: await db.activities.count({
-            where: globalAccess ? {} : where,
             where,
             include,
             distinct: true,
@@ -380,7 +399,6 @@ module.exports = class ActivitiesDBApi {
           }),
         }
       : await db.activities.findAndCountAll({
-          where: globalAccess ? {} : where,
           where,
           include,
           distinct: true,
@@ -392,11 +410,6 @@ module.exports = class ActivitiesDBApi {
               : [['createdAt', 'desc']],
           transaction,
         });
-
-    //    rows = await this._fillWithRelationsAndFilesForRows(
-    //      rows,
-    //      options,
-    //    );
 
     return { rows, count };
   }

@@ -15,7 +15,7 @@ const Organizations = db.organizations;
 
 const ActivitiesData = [
   {
-    description: 'Charles Sherrington',
+    description: 'Franz Boas',
 
     start_time: new Date(),
 
@@ -29,7 +29,7 @@ const ActivitiesData = [
   },
 
   {
-    description: 'Alfred Wegener',
+    description: 'William Herschel',
 
     start_time: new Date(),
 
@@ -43,35 +43,7 @@ const ActivitiesData = [
   },
 
   {
-    description: 'Sigmund Freud',
-
-    start_time: new Date(),
-
-    end_time: new Date(),
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    description: 'Max Born',
-
-    start_time: new Date(),
-
-    end_time: new Date(),
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    description: 'Alexander Fleming',
+    description: 'Euclid',
 
     start_time: new Date(),
 
@@ -87,105 +59,51 @@ const ActivitiesData = [
 
 const ContactsData = [
   {
-    first_name: 'Konrad Lorenz',
+    first_name: 'Francis Galton',
 
-    last_name: 'William Harvey',
+    last_name: 'Jean Baptiste Lamarck',
 
-    email: 'Carl Gauss (Karl Friedrich Gauss)',
+    email: 'Max von Laue',
+
+    // type code here for "relation_one" field
 
     // type code here for "relation_one" field
 
-    // type code here for "relation_one" field
+    phone: 6,
   },
 
   {
-    first_name: 'Leonard Euler',
+    first_name: 'Jean Baptiste Lamarck',
 
-    last_name: 'Hermann von Helmholtz',
+    last_name: 'Charles Lyell',
 
-    email: 'Michael Faraday',
+    email: 'Albrecht von Haller',
+
+    // type code here for "relation_one" field
 
     // type code here for "relation_one" field
 
-    // type code here for "relation_one" field
+    phone: 1,
   },
 
   {
-    first_name: 'Joseph J. Thomson',
+    first_name: 'Alfred Binet',
 
-    last_name: 'George Gaylord Simpson',
+    last_name: 'Claude Bernard',
 
-    email: 'John Dalton',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    first_name: 'Claude Levi-Strauss',
-
-    last_name: 'B. F. Skinner',
-
-    email: 'Isaac Newton',
+    email: 'Francis Crick',
 
     // type code here for "relation_one" field
 
     // type code here for "relation_one" field
-  },
 
-  {
-    first_name: 'Lucretius',
-
-    last_name: 'Claude Levi-Strauss',
-
-    email: 'Ludwig Boltzmann',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
+    phone: 3,
   },
 ];
 
 const LeadsData = [
   {
-    name: 'Arthur Eddington',
-
-    status: 'Lost',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_many" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Trofim Lysenko',
-
-    status: 'New',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_many" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Euclid',
-
-    status: 'New',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_many" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Edward Teller',
+    name: 'Jonas Salk',
 
     status: 'Qualified',
 
@@ -197,9 +115,21 @@ const LeadsData = [
   },
 
   {
-    name: 'Edwin Hubble',
+    name: 'Gregor Mendel',
 
-    status: 'New',
+    status: 'Qualified',
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_many" field
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    name: 'Michael Faraday',
+
+    status: 'Qualified',
 
     // type code here for "relation_one" field
 
@@ -211,19 +141,9 @@ const LeadsData = [
 
 const MetricsData = [
   {
-    name: 'Wilhelm Wundt',
+    name: 'Alfred Wegener',
 
-    value: 12.02,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Joseph J. Thomson',
-
-    value: 21.41,
+    value: 72.48,
 
     // type code here for "relation_one" field
 
@@ -231,19 +151,9 @@ const MetricsData = [
   },
 
   {
-    name: 'William Herschel',
+    name: 'Richard Feynman',
 
-    value: 75.57,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'James Clerk Maxwell',
-
-    value: 75.59,
+    value: 13.78,
 
     // type code here for "relation_one" field
 
@@ -251,9 +161,9 @@ const MetricsData = [
   },
 
   {
-    name: 'Alfred Binet',
+    name: 'Trofim Lysenko',
 
-    value: 44.89,
+    value: 37.16,
 
     // type code here for "relation_one" field
 
@@ -263,7 +173,7 @@ const MetricsData = [
 
 const NotesData = [
   {
-    content: 'Theodosius Dobzhansky',
+    content: 'Charles Darwin',
 
     // type code here for "relation_one" field
 
@@ -273,7 +183,7 @@ const NotesData = [
   },
 
   {
-    content: 'Wilhelm Wundt',
+    content: 'Lynn Margulis',
 
     // type code here for "relation_one" field
 
@@ -283,27 +193,7 @@ const NotesData = [
   },
 
   {
-    content: 'Sigmund Freud',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    content: 'Carl Linnaeus',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    content: 'Gertrude Belle Elion',
+    content: 'Gustav Kirchhoff',
 
     // type code here for "relation_one" field
 
@@ -315,23 +205,15 @@ const NotesData = [
 
 const OrganizationsData = [
   {
-    name: 'Louis Victor de Broglie',
+    name: 'Alfred Kinsey',
   },
 
   {
-    name: 'Albrecht von Haller',
+    name: 'Arthur Eddington',
   },
 
   {
-    name: 'Enrico Fermi',
-  },
-
-  {
-    name: 'Isaac Newton',
-  },
-
-  {
-    name: 'Murray Gell-Mann',
+    name: 'B. F. Skinner',
   },
 ];
 
@@ -370,28 +252,6 @@ async function associateUserWithOrganization() {
   if (User2?.setOrganization) {
     await User2.setOrganization(relatedOrganization2);
   }
-
-  const relatedOrganization3 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const User3 = await Users.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (User3?.setOrganization) {
-    await User3.setOrganization(relatedOrganization3);
-  }
-
-  const relatedOrganization4 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const User4 = await Users.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (User4?.setOrganization) {
-    await User4.setOrganization(relatedOrganization4);
-  }
 }
 
 async function associateActivityWithUser() {
@@ -426,28 +286,6 @@ async function associateActivityWithUser() {
   });
   if (Activity2?.setUser) {
     await Activity2.setUser(relatedUser2);
-  }
-
-  const relatedUser3 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Activity3 = await Activities.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Activity3?.setUser) {
-    await Activity3.setUser(relatedUser3);
-  }
-
-  const relatedUser4 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Activity4 = await Activities.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Activity4?.setUser) {
-    await Activity4.setUser(relatedUser4);
   }
 }
 
@@ -484,28 +322,6 @@ async function associateActivityWithLead() {
   if (Activity2?.setLead) {
     await Activity2.setLead(relatedLead2);
   }
-
-  const relatedLead3 = await Leads.findOne({
-    offset: Math.floor(Math.random() * (await Leads.count())),
-  });
-  const Activity3 = await Activities.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Activity3?.setLead) {
-    await Activity3.setLead(relatedLead3);
-  }
-
-  const relatedLead4 = await Leads.findOne({
-    offset: Math.floor(Math.random() * (await Leads.count())),
-  });
-  const Activity4 = await Activities.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Activity4?.setLead) {
-    await Activity4.setLead(relatedLead4);
-  }
 }
 
 async function associateActivityWithOrganization() {
@@ -540,28 +356,6 @@ async function associateActivityWithOrganization() {
   });
   if (Activity2?.setOrganization) {
     await Activity2.setOrganization(relatedOrganization2);
-  }
-
-  const relatedOrganization3 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const Activity3 = await Activities.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Activity3?.setOrganization) {
-    await Activity3.setOrganization(relatedOrganization3);
-  }
-
-  const relatedOrganization4 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const Activity4 = await Activities.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Activity4?.setOrganization) {
-    await Activity4.setOrganization(relatedOrganization4);
   }
 }
 
@@ -598,28 +392,6 @@ async function associateContactWithLead() {
   if (Contact2?.setLead) {
     await Contact2.setLead(relatedLead2);
   }
-
-  const relatedLead3 = await Leads.findOne({
-    offset: Math.floor(Math.random() * (await Leads.count())),
-  });
-  const Contact3 = await Contacts.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Contact3?.setLead) {
-    await Contact3.setLead(relatedLead3);
-  }
-
-  const relatedLead4 = await Leads.findOne({
-    offset: Math.floor(Math.random() * (await Leads.count())),
-  });
-  const Contact4 = await Contacts.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Contact4?.setLead) {
-    await Contact4.setLead(relatedLead4);
-  }
 }
 
 async function associateContactWithOrganization() {
@@ -655,28 +427,6 @@ async function associateContactWithOrganization() {
   if (Contact2?.setOrganization) {
     await Contact2.setOrganization(relatedOrganization2);
   }
-
-  const relatedOrganization3 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const Contact3 = await Contacts.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Contact3?.setOrganization) {
-    await Contact3.setOrganization(relatedOrganization3);
-  }
-
-  const relatedOrganization4 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const Contact4 = await Contacts.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Contact4?.setOrganization) {
-    await Contact4.setOrganization(relatedOrganization4);
-  }
 }
 
 async function associateLeadWithOwner() {
@@ -711,28 +461,6 @@ async function associateLeadWithOwner() {
   });
   if (Lead2?.setOwner) {
     await Lead2.setOwner(relatedOwner2);
-  }
-
-  const relatedOwner3 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Lead3 = await Leads.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Lead3?.setOwner) {
-    await Lead3.setOwner(relatedOwner3);
-  }
-
-  const relatedOwner4 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Lead4 = await Leads.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Lead4?.setOwner) {
-    await Lead4.setOwner(relatedOwner4);
   }
 }
 
@@ -771,28 +499,6 @@ async function associateLeadWithOrganization() {
   if (Lead2?.setOrganization) {
     await Lead2.setOrganization(relatedOrganization2);
   }
-
-  const relatedOrganization3 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const Lead3 = await Leads.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Lead3?.setOrganization) {
-    await Lead3.setOrganization(relatedOrganization3);
-  }
-
-  const relatedOrganization4 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const Lead4 = await Leads.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Lead4?.setOrganization) {
-    await Lead4.setOrganization(relatedOrganization4);
-  }
 }
 
 async function associateMetricWithUser() {
@@ -827,28 +533,6 @@ async function associateMetricWithUser() {
   });
   if (Metric2?.setUser) {
     await Metric2.setUser(relatedUser2);
-  }
-
-  const relatedUser3 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Metric3 = await Metrics.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Metric3?.setUser) {
-    await Metric3.setUser(relatedUser3);
-  }
-
-  const relatedUser4 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Metric4 = await Metrics.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Metric4?.setUser) {
-    await Metric4.setUser(relatedUser4);
   }
 }
 
@@ -885,28 +569,6 @@ async function associateMetricWithOrganization() {
   if (Metric2?.setOrganization) {
     await Metric2.setOrganization(relatedOrganization2);
   }
-
-  const relatedOrganization3 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const Metric3 = await Metrics.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Metric3?.setOrganization) {
-    await Metric3.setOrganization(relatedOrganization3);
-  }
-
-  const relatedOrganization4 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const Metric4 = await Metrics.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Metric4?.setOrganization) {
-    await Metric4.setOrganization(relatedOrganization4);
-  }
 }
 
 async function associateNoteWithUser() {
@@ -941,28 +603,6 @@ async function associateNoteWithUser() {
   });
   if (Note2?.setUser) {
     await Note2.setUser(relatedUser2);
-  }
-
-  const relatedUser3 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Note3 = await Notes.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Note3?.setUser) {
-    await Note3.setUser(relatedUser3);
-  }
-
-  const relatedUser4 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Note4 = await Notes.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Note4?.setUser) {
-    await Note4.setUser(relatedUser4);
   }
 }
 
@@ -999,28 +639,6 @@ async function associateNoteWithLead() {
   if (Note2?.setLead) {
     await Note2.setLead(relatedLead2);
   }
-
-  const relatedLead3 = await Leads.findOne({
-    offset: Math.floor(Math.random() * (await Leads.count())),
-  });
-  const Note3 = await Notes.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Note3?.setLead) {
-    await Note3.setLead(relatedLead3);
-  }
-
-  const relatedLead4 = await Leads.findOne({
-    offset: Math.floor(Math.random() * (await Leads.count())),
-  });
-  const Note4 = await Notes.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Note4?.setLead) {
-    await Note4.setLead(relatedLead4);
-  }
 }
 
 async function associateNoteWithOrganization() {
@@ -1055,28 +673,6 @@ async function associateNoteWithOrganization() {
   });
   if (Note2?.setOrganization) {
     await Note2.setOrganization(relatedOrganization2);
-  }
-
-  const relatedOrganization3 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const Note3 = await Notes.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Note3?.setOrganization) {
-    await Note3.setOrganization(relatedOrganization3);
-  }
-
-  const relatedOrganization4 = await Organizations.findOne({
-    offset: Math.floor(Math.random() * (await Organizations.count())),
-  });
-  const Note4 = await Notes.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Note4?.setOrganization) {
-    await Note4.setOrganization(relatedOrganization4);
   }
 }
 

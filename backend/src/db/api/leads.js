@@ -197,6 +197,27 @@ module.exports = class LeadsDBApi {
       {
         model: db.users,
         as: 'owner',
+
+        where: filter.owner
+          ? {
+              [Op.or]: [
+                {
+                  id: {
+                    [Op.in]: filter.owner
+                      .split('|')
+                      .map((term) => Utils.uuid(term)),
+                  },
+                },
+                {
+                  firstName: {
+                    [Op.or]: filter.owner
+                      .split('|')
+                      .map((term) => ({ [Op.iLike]: `%${term}%` })),
+                  },
+                },
+              ],
+            }
+          : {},
       },
 
       {
@@ -207,16 +228,6 @@ module.exports = class LeadsDBApi {
       {
         model: db.contacts,
         as: 'contacts',
-        through: filter.contacts
-          ? {
-              where: {
-                [Op.or]: filter.contacts.split('|').map((item) => {
-                  return { ['Id']: Utils.uuid(item) };
-                }),
-              },
-            }
-          : null,
-        required: filter.contacts ? true : null,
       },
     ];
 
@@ -254,17 +265,6 @@ module.exports = class LeadsDBApi {
         };
       }
 
-      if (filter.owner) {
-        const listItems = filter.owner.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          ownerId: { [Op.or]: listItems },
-        };
-      }
-
       if (filter.organization) {
         const listItems = filter.organization.split('|').map((item) => {
           return Utils.uuid(item);
@@ -274,6 +274,38 @@ module.exports = class LeadsDBApi {
           ...where,
           organizationId: { [Op.or]: listItems },
         };
+      }
+
+      if (filter.contacts) {
+        const searchTerms = filter.contacts.split('|');
+
+        include = [
+          {
+            model: db.contacts,
+            as: 'contacts_filter',
+            required: searchTerms.length > 0,
+            where:
+              searchTerms.length > 0
+                ? {
+                    [Op.or]: [
+                      {
+                        id: {
+                          [Op.in]: searchTerms.map((term) => Utils.uuid(term)),
+                        },
+                      },
+                      {
+                        first_name: {
+                          [Op.or]: searchTerms.map((term) => ({
+                            [Op.iLike]: `%${term}%`,
+                          })),
+                        },
+                      },
+                    ],
+                  }
+                : undefined,
+          },
+          ...include,
+        ];
       }
 
       if (filter.createdAtRange) {
@@ -309,7 +341,6 @@ module.exports = class LeadsDBApi {
       ? {
           rows: [],
           count: await db.leads.count({
-            where: globalAccess ? {} : where,
             where,
             include,
             distinct: true,
@@ -323,7 +354,6 @@ module.exports = class LeadsDBApi {
           }),
         }
       : await db.leads.findAndCountAll({
-          where: globalAccess ? {} : where,
           where,
           include,
           distinct: true,
@@ -335,11 +365,6 @@ module.exports = class LeadsDBApi {
               : [['createdAt', 'desc']],
           transaction,
         });
-
-    //    rows = await this._fillWithRelationsAndFilesForRows(
-    //      rows,
-    //      options,
-    //    );
 
     return { rows, count };
   }

@@ -81,6 +81,11 @@ const ListContacts = ({
                       {dataFormatter.leadsOneListFormatter(item.lead)}
                     </p>
                   </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs   text-gray-500 '}>Phone</p>
+                    <p className={'line-clamp-2'}>{item.phone}</p>
+                  </div>
                 </div>
                 <ListActionsPopover
                   onDelete={onDelete}
