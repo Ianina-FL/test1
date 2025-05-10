@@ -6,6 +6,7 @@ import {
 } from '@mdi/js';
 import Head from 'next/head';
 import React, { ReactElement } from 'react';
+import 'react-toastify/dist/ReactToastify.min.css';
 import CardBox from '../../components/CardBox';
 import LayoutAuthenticated from '../../layouts/Authenticated';
 import SectionMain from '../../components/SectionMain';
@@ -42,6 +43,8 @@ const initialValues = {
   lead: '',
 
   organization: '',
+
+  phone: '',
 };
 
 const ContactsNew = () => {
@@ -101,6 +104,10 @@ const ContactsNew = () => {
                   options={[]}
                   itemRef={'organizations'}
                 ></Field>
+              </FormField>
+
+              <FormField label='Phone'>
+                <Field type='number' name='phone' placeholder='Phone' />
               </FormField>
 
               <BaseDivider />

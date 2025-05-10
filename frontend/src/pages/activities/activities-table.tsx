@@ -33,7 +33,9 @@ const ActivitiesTablesPage = () => {
 
     { label: 'StartTime', title: 'start_time', date: 'true' },
     { label: 'EndTime', title: 'end_time', date: 'true' },
+
     { label: 'User', title: 'user' },
+
     { label: 'Lead', title: 'lead' },
   ]);
 

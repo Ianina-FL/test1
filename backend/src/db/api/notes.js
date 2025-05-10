@@ -182,11 +182,53 @@ module.exports = class NotesDBApi {
       {
         model: db.users,
         as: 'user',
+
+        where: filter.user
+          ? {
+              [Op.or]: [
+                {
+                  id: {
+                    [Op.in]: filter.user
+                      .split('|')
+                      .map((term) => Utils.uuid(term)),
+                  },
+                },
+                {
+                  firstName: {
+                    [Op.or]: filter.user
+                      .split('|')
+                      .map((term) => ({ [Op.iLike]: `%${term}%` })),
+                  },
+                },
+              ],
+            }
+          : {},
       },
 
       {
         model: db.leads,
         as: 'lead',
+
+        where: filter.lead
+          ? {
+              [Op.or]: [
+                {
+                  id: {
+                    [Op.in]: filter.lead
+                      .split('|')
+                      .map((term) => Utils.uuid(term)),
+                  },
+                },
+                {
+                  name: {
+                    [Op.or]: filter.lead
+                      .split('|')
+                      .map((term) => ({ [Op.iLike]: `%${term}%` })),
+                  },
+                },
+              ],
+            }
+          : {},
       },
 
       {
@@ -219,28 +261,6 @@ module.exports = class NotesDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
-        };
-      }
-
-      if (filter.user) {
-        const listItems = filter.user.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          userId: { [Op.or]: listItems },
-        };
-      }
-
-      if (filter.lead) {
-        const listItems = filter.lead.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          leadId: { [Op.or]: listItems },
         };
       }
 
@@ -288,7 +308,6 @@ module.exports = class NotesDBApi {
       ? {
           rows: [],
           count: await db.notes.count({
-            where: globalAccess ? {} : where,
             where,
             include,
             distinct: true,
@@ -302,7 +321,6 @@ module.exports = class NotesDBApi {
           }),
         }
       : await db.notes.findAndCountAll({
-          where: globalAccess ? {} : where,
           where,
           include,
           distinct: true,
@@ -314,11 +332,6 @@ module.exports = class NotesDBApi {
               : [['createdAt', 'desc']],
           transaction,
         });
-
-    //    rows = await this._fillWithRelationsAndFilesForRows(
-    //      rows,
-    //      options,
-    //    );
 
     return { rows, count };
   }

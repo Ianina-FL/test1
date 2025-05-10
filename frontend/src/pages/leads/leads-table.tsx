@@ -32,6 +32,7 @@ const LeadsTablesPage = () => {
     { label: 'LeadName', title: 'name' },
 
     { label: 'Owner', title: 'owner' },
+
     { label: 'Contacts', title: 'contacts' },
     {
       label: 'Status',

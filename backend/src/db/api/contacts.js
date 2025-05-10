@@ -18,6 +18,7 @@ module.exports = class ContactsDBApi {
         first_name: data.first_name || null,
         last_name: data.last_name || null,
         email: data.email || null,
+        phone: data.phone || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -47,6 +48,7 @@ module.exports = class ContactsDBApi {
       first_name: item.first_name || null,
       last_name: item.last_name || null,
       email: item.email || null,
+      phone: item.phone || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -75,6 +77,7 @@ module.exports = class ContactsDBApi {
         first_name: data.first_name || null,
         last_name: data.last_name || null,
         email: data.email || null,
+        phone: data.phone || null,
         updatedById: currentUser.id,
       },
       { transaction },
@@ -178,6 +181,27 @@ module.exports = class ContactsDBApi {
       {
         model: db.leads,
         as: 'lead',
+
+        where: filter.lead
+          ? {
+              [Op.or]: [
+                {
+                  id: {
+                    [Op.in]: filter.lead
+                      .split('|')
+                      .map((term) => Utils.uuid(term)),
+                  },
+                },
+                {
+                  name: {
+                    [Op.or]: filter.lead
+                      .split('|')
+                      .map((term) => ({ [Op.iLike]: `%${term}%` })),
+                  },
+                },
+              ],
+            }
+          : {},
       },
 
       {
@@ -215,6 +239,30 @@ module.exports = class ContactsDBApi {
         };
       }
 
+      if (filter.phoneRange) {
+        const [start, end] = filter.phoneRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            phone: {
+              ...where.phone,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            phone: {
+              ...where.phone,
+              [Op.lte]: end,
+            },
+          };
+        }
+      }
+
       if (
         filter.active === true ||
         filter.active === 'true' ||
@@ -224,17 +272,6 @@ module.exports = class ContactsDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
-        };
-      }
-
-      if (filter.lead) {
-        const listItems = filter.lead.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          leadId: { [Op.or]: listItems },
         };
       }
 
@@ -282,7 +319,6 @@ module.exports = class ContactsDBApi {
       ? {
           rows: [],
           count: await db.contacts.count({
-            where: globalAccess ? {} : where,
             where,
             include,
             distinct: true,
@@ -296,7 +332,6 @@ module.exports = class ContactsDBApi {
           }),
         }
       : await db.contacts.findAndCountAll({
-          where: globalAccess ? {} : where,
           where,
           include,
           distinct: true,
@@ -308,11 +343,6 @@ module.exports = class ContactsDBApi {
               : [['createdAt', 'desc']],
           transaction,
         });
-
-    //    rows = await this._fillWithRelationsAndFilesForRows(
-    //      rows,
-    //      options,
-    //    );
 
     return { rows, count };
   }

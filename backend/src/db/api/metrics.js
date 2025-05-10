@@ -173,6 +173,27 @@ module.exports = class MetricsDBApi {
       {
         model: db.users,
         as: 'user',
+
+        where: filter.user
+          ? {
+              [Op.or]: [
+                {
+                  id: {
+                    [Op.in]: filter.user
+                      .split('|')
+                      .map((term) => Utils.uuid(term)),
+                  },
+                },
+                {
+                  firstName: {
+                    [Op.or]: filter.user
+                      .split('|')
+                      .map((term) => ({ [Op.iLike]: `%${term}%` })),
+                  },
+                },
+              ],
+            }
+          : {},
       },
 
       {
@@ -232,17 +253,6 @@ module.exports = class MetricsDBApi {
         };
       }
 
-      if (filter.user) {
-        const listItems = filter.user.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          userId: { [Op.or]: listItems },
-        };
-      }
-
       if (filter.organization) {
         const listItems = filter.organization.split('|').map((item) => {
           return Utils.uuid(item);
@@ -287,7 +297,6 @@ module.exports = class MetricsDBApi {
       ? {
           rows: [],
           count: await db.metrics.count({
-            where: globalAccess ? {} : where,
             where,
             include,
             distinct: true,
@@ -301,7 +310,6 @@ module.exports = class MetricsDBApi {
           }),
         }
       : await db.metrics.findAndCountAll({
-          where: globalAccess ? {} : where,
           where,
           include,
           distinct: true,
@@ -313,11 +321,6 @@ module.exports = class MetricsDBApi {
               : [['createdAt', 'desc']],
           transaction,
         });
-
-    //    rows = await this._fillWithRelationsAndFilesForRows(
-    //      rows,
-    //      options,
-    //    );
 
     return { rows, count };
   }

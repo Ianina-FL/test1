@@ -118,6 +118,13 @@ const CardUsers = ({
                     </div>
                   </dd>
                 </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='  text-gray-500  dark:text-dark-600'>Phone</dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>{item.phone}</div>
+                  </dd>
+                </div>
               </dl>
             </li>
           ))}

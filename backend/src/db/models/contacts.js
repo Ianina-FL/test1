@@ -26,6 +26,10 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
       },
 
+      phone: {
+        type: DataTypes.INTEGER,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
